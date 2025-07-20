@@ -15,8 +15,7 @@ stages:
 - stage: Validate
   jobs:
   - job: terraform_validate
-    pool:
-      vmImage: 'ubuntu-latest'
+    pool: mine
     steps:
     - task: TerraformInstaller@0
       inputs:
@@ -44,8 +43,7 @@ stages:
   jobs:
   - deployment: terraform_apply_dev
     environment: dev
-    pool:
-      vmImage: 'ubuntu-latest'
+    pool: mine
     strategy:
       runOnce:
         deploy:
@@ -66,8 +64,7 @@ stages:
   jobs:
   - deployment: terraform_apply_test
     environment: test
-    pool:
-      vmImage: 'ubuntu-latest'
+    pool: mine
     strategy:
       runOnce:
         deploy:
